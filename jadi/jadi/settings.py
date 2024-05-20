@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u2oxvtk@_9bkl*((a0(k81n-wo7r&6*n$w3a-cu3st4ojymu7@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -51,6 +51,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'jadi.urls'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://983e-41-209-10-152.ngrok-free.app',
+    # Add any other trusted origins here
+]
 
 TEMPLATES = [
     {
