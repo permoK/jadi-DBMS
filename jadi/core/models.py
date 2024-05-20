@@ -63,46 +63,25 @@ class Lecturer(models.Model):
 
 ################### Notes ###############################
 
-class Note(models.Model):
-    noteid = models.AutoField(primary_key=True)
-    noteName = models.CharField(max_length=100)
-    noteDescription = models.TextField()
-    noteURL = models.URLField()
-    extension = models.CharField(max_length=10)
-    size = models.IntegerField()
-    cmsId = models.IntegerField()
-    createdAt = models.DateTimeField(auto_now_add=True)
-    updatedAt = models.DateTimeField(auto_now=True)
-    tags = models.TextField()
-    category = models.CharField(max_length=100)
-    views = models.IntegerField()
-    popularity = models.IntegerField()
-    saves = models.IntegerField()
-    likes = models.IntegerField()
+class ResourceCategory(models.Model):
+    resourceId = models.AutoField(primary_key=True)
+    resourceName = models.CharField(max_length=100)
+    resourceDescription = models.TextField()
+    def __str__(self):
+        return self.resourceName
+
+
+class AcademicResource(models.Model):
+    # AcademicResourceId = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    AcademicResourceId = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    resource = models.ForeignKey(ResourceCategory, on_delete=models.CASCADE)
+    uploadedBy = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='uploadedBy')
 
     def __str__(self):
-        return self.noteName
+        return self.name
 
-
-class savedNote(models.Model):
-    noteid = models.AutoField(primary_key=True)
-    noteName = models.CharField(max_length=100)
-    noteDescription = models.TextField()
-    noteURL = models.URLField()
-    extension = models.CharField(max_length=10)
-    size = models.IntegerField()
-    cmsId = models.IntegerField()
-    createdAt = models.DateTimeField(auto_now_add=True)
-    updatedAt = models.DateTimeField(auto_now=True)
-    tags = models.TextField()
-    category = models.CharField(max_length=100)
-    views = models.IntegerField()
-    popularity = models.IntegerField()
-    saves = models.IntegerField()
-    likes = models.IntegerField()
-
-    def __str__(self):
-        return self.noteName
 
 
 ################## End Notes ################################
