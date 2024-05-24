@@ -12,5 +12,5 @@ admin.site.register(Department)
 admin.site.register(Lecturer)
 admin.site.register(ResourceCategory)
 admin.site.register(AcademicResource)
-# admin.site.register(Comment)
+admin.site.register(AuthorizedUploader)
 

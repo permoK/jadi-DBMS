@@ -87,6 +87,14 @@ class AcademicResource(models.Model):
 ################## End Notes ################################
 
 
+################## Authorized uploaders #################################
+
+class AuthorizedUploader(models.Model):
+    uploaderId = models.AutoField(primary_key=True)
+    name = models.ManyToManyField(UserProfile or Lecturer)
+
+################## End Authorized uploaders ##############################
+
 ################# comments #################################
 
 # class Comment(models.Model):
