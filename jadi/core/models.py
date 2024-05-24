@@ -7,6 +7,7 @@ from django.db import models
 class Institution(models.Model):
     institutionId = models.AutoField(primary_key=True, blank=True)
     institutionName = models.CharField(max_length=100, null=True)
+    institutionBranch = models.CharField(max_length=100, null=True)
     institutionLocation = models.CharField(max_length=100, null=True)
     def __str__(self):
         return self.institutionName
@@ -17,7 +18,7 @@ class UserProfile(models.Model):
     fullName = models.CharField(max_length=100)
     email = models.EmailField()
     # pfpURL = models.URLField()
-    learningInstitution = models.CharField(max_length=100)
+    learningInstitution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     courseMajor = models.CharField(max_length=100)
     # interests = models.TextField()
     # savedNotes = models.TextField()
