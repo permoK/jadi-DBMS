@@ -4,6 +4,13 @@ from django.db import models
 
 # Create your models here.
 
+class Institution(models.Model):
+    institutionId = models.AutoField(primary_key=True, blank=True)
+    institutionName = models.CharField(max_length=100, null=True)
+    institutionLocation = models.CharField(max_length=100, null=True)
+    def __str__(self):
+        return self.institutionName
+
 ####################student########################
 class UserProfile(models.Model):
     ProfileId = models.AutoField(primary_key=True, blank=True)
