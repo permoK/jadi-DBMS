@@ -10,7 +10,7 @@ class Institution(models.Model):
     institutionBranch = models.CharField(max_length=100, null=True)
     institutionLocation = models.CharField(max_length=100, null=True)
     def __str__(self):
-        return self.institutionName
+        return f"{self.institutionName + ' - ' + self.institutionBranch}"
 
 ####################student########################
 class UserProfile(models.Model):
