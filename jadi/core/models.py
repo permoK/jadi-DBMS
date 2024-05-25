@@ -74,6 +74,10 @@ class CoreUserProfile(models.Model):
     class Meta:
         db_table = 'core_userprofile'
 
+    def __str__(self):
+        return self.fullName
+
+
 #################### End User ##############################
 
 
