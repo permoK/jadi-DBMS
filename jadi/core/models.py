@@ -12,6 +12,27 @@ class Institution(models.Model):
     def __str__(self):
         return f"{self.institutionName + ' - ' + self.institutionBranch}"
 
+
+# ################### School #########################
+class School(models.Model):
+    schoolId = models.AutoField(primary_key=True, blank=True)
+    schoolName = models.CharField(max_length=100, null=True)
+    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
+    def __str__ (self):
+        return self.schoolName + ' - ' + self.institution.institutionName
+    
+# ################### End School #########################
+
+
+# ################### Department #########################
+class Department(models.Model):
+    departmentId = models.AutoField(primary_key=True, blank=True)
+    departmentName = models.CharField(max_length=100, null=True)
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.departmentName + ' - ' + self.school.schoolName + ' - ' + self.school.institution.institutionName
+# ################### End Department #########################
+
 ####################student########################
 class UserProfile(models.Model):
     ProfileId = models.AutoField(primary_key=True, blank=True)
@@ -20,6 +41,10 @@ class UserProfile(models.Model):
     # pfpURL = models.URLField()
     learningInstitution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     courseMajor = models.CharField(max_length=100)
+    yearOfStudy = models.IntegerField(blank=True, null=True)
+    studentNumber = models.CharField(max_length=100, null=True)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
     # interests = models.TextField()
     # savedNotes = models.TextField()
     # likedNotes = models.TextField()
@@ -35,25 +60,7 @@ class UserProfile(models.Model):
 
 ################### End student #######################
 
-# ################### School #########################
-class School(models.Model):
-    schoolId = models.AutoField(primary_key=True, blank=True)
-    schoolName = models.CharField(max_length=100, null=True)
-    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
-    def __str__ (self):
-        return self.schoolName
-    
-# ################### End School #########################
 
-
-# ################### Department #########################
-class Department(models.Model):
-    departmentId = models.AutoField(primary_key=True, blank=True)
-    departmentName = models.CharField(max_length=100, null=True)
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.departmentName + ' - ' + self.school.schoolName + ' - ' + self.school.institution.institutionName
-# ################### End Department #########################
 
 
 # ################## Lecturer ##########################
