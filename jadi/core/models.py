@@ -17,7 +17,7 @@ class Institution(models.Model):
 class School(models.Model):
     schoolId = models.AutoField(primary_key=True, blank=True)
     schoolName = models.CharField(max_length=100, null=True)
-    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
+    # institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     def __str__ (self):
         return self.schoolName + ' - ' + self.institution.institutionName
     
@@ -28,7 +28,7 @@ class School(models.Model):
 class Department(models.Model):
     departmentId = models.AutoField(primary_key=True, blank=True)
     departmentName = models.CharField(max_length=100, null=True)
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    # school = models.ForeignKey(School, on_delete=models.CASCADE)
     def __str__(self):
         return self.departmentName + ' - ' + self.school.schoolName + ' - ' + self.school.institution.institutionName
 # ################### End Department #########################
