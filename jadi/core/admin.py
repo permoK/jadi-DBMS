@@ -7,12 +7,4 @@ from .models import *
 
 admin.site.register(CoreUserProfile)
 admin.site.register(LearningInstitution)
-# admin.site.register(Institution)
-# admin.site.register(UserProfile)
-# admin.site.register(School)
-# admin.site.register(Department)
-# admin.site.register(Lecturer)
-# admin.site.register(ResourceCategory)
-# admin.site.register(AcademicResource)
-# admin.site.register(AuthorizedUploader)
-
+admin.site.register(Interest)

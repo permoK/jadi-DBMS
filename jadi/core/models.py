@@ -4,11 +4,44 @@ from django.db import models
 
 # Create your models here.
 
+#################### LearningInstitution ##############################
 class LearningInstitution(models.Model):
     institutionId = models.AutoField(primary_key=True, blank=True)
     institutionName = models.CharField(max_length=100, blank=True)
     def __str__(self):
         return self.institutionName
+#################### End LearningInstitution ##############################
+
+#################### Interests ##############################
+class Interest(models.Model):
+    interestId = models.AutoField(primary_key=True)
+    interestName = models.CharField(max_length=100)
+    def __str__(self):
+        return self.interestName
+#################### End Interests ##############################
+
+#################### User ##############################
+class CoreUserProfile(models.Model):
+    profileId = models.CharField(max_length=100, primary_key=True)
+    username = models.CharField(max_length=100)
+    fullName = models.CharField(max_length=100)
+    email = models.EmailField(max_length=256)
+    learningInstitution = models.ForeignKey('LearningInstitution', on_delete=models.CASCADE, blank=True, null=True)
+    courseMajor = models.CharField(max_length=100, blank=True)
+    interests = models.ManyToManyField(Interest)
+    isStudent = models.BooleanField()
+    isLecturer = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'core_userprofile'
+
+    def __str__(self):
+        return self.fullName
+
+
+#################### End User ##############################
 
 
 ## ################### School #########################
@@ -57,30 +90,6 @@ class LearningInstitution(models.Model):
 ##         return self.fullName
 
 #################### End student #######################
-
-#################### User ##############################
-class CoreUserProfile(models.Model):
-    profileId = models.TextField(primary_key=True)
-    username = models.TextField()
-    fullName = models.TextField()
-    email = models.EmailField(max_length=256)
-    learningInstitution = models.ForeignKey('LearningInstitution', on_delete=models.CASCADE, blank=True, null=True)
-    courseMajor = models.TextField()
-    isStudent = models.BooleanField()
-    isLecturer = models.BooleanField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        db_table = 'core_userprofile'
-
-    def __str__(self):
-        return self.fullName
-
-
-#################### End User ##############################
-
-
 ## ################## Lecturer ##########################
 ## class Lecturer(models.Model):
 ##     lecturerId = models.AutoField(primary_key=True)
