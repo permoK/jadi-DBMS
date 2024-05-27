@@ -29,7 +29,7 @@ class Interest(models.Model):
 #################### End Interests ##############################
 
 #################### User ##############################
-class CoreUserProfile(models.Model):
+class UserProfile(models.Model):
     profileId = models.CharField(max_length=100, primary_key=True)
     username = models.CharField(max_length=100)
     fullName = models.CharField(max_length=100)

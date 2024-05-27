@@ -9,7 +9,7 @@ from django.contrib.admin.models import LogEntry
 
 from .models import *
 
-admin.site.register(CoreUserProfile)
+admin.site.register(UserProfile)
 admin.site.register(LearningInstitution)
 admin.site.register(Interest)
 
