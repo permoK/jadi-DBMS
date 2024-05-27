@@ -8,6 +8,10 @@ from django.db import models
 class LearningInstitution(models.Model):
     institutionId = models.AutoField(primary_key=True, blank=True)
     institutionName = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        db_table = 'learninginstitution'
+
     def __str__(self):
         return self.institutionName
 #################### End LearningInstitution ##############################
@@ -16,6 +20,10 @@ class LearningInstitution(models.Model):
 class Interest(models.Model):
     interestId = models.AutoField(primary_key=True)
     interestName = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'interests'
+
     def __str__(self):
         return self.interestName
 #################### End Interests ##############################
@@ -35,7 +43,7 @@ class CoreUserProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'core_userprofile'
+        db_table = 'userprofile'
 
     def __str__(self):
         return self.fullName
