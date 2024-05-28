@@ -31,7 +31,7 @@ class Interest(models.Model):
 
 #################### User ##############################
 class UserProfile(models.Model):
-    id = models.AutoField(primary_key=True, blank=True)
+    profileId = models.AutoField(primary_key=True, blank=True)
     clerkId = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     fullName = models.CharField(max_length=100)

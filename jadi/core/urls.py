@@ -6,12 +6,12 @@ from .views import *
 
 router = DefaultRouter()
 router.register('user-profile', UserProfileView)
-router.register('learning-institution', LearningInstitutionView)
-router.register('interest', InterestView)
+router.register('learning-institutions', LearningInstitutionView)
+router.register('interests', InterestView)
 
 
 urlpatterns = [
     path('', index),
-    path('api/', include(router.urls)),
+    path('api/v1/user/', include(router.urls)),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
