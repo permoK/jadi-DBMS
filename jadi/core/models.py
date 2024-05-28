@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 
 
@@ -30,13 +31,15 @@ class Interest(models.Model):
 
 #################### User ##############################
 class UserProfile(models.Model):
-    profileId = models.CharField(max_length=100, primary_key=True)
+    id = models.AutoField(primary_key=True, blank=True)
+    clerkId = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     fullName = models.CharField(max_length=100)
     email = models.EmailField(max_length=256)
     learningInstitution = models.ForeignKey('LearningInstitution', on_delete=models.CASCADE, blank=True, null=True)
     courseMajor = models.CharField(max_length=100, blank=True)
     interests = models.ManyToManyField(Interest)
+    customUserInterest = ArrayField(models.CharField(max_length=100), blank=True, null=True)
     isStudent = models.BooleanField()
     isLecturer = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
