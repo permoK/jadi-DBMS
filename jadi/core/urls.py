@@ -4,11 +4,14 @@ from .views import *
 
 # from . import views
 
+# router = DefaultRouter()
+# router.register('user-profile', UserProfileView)
+# router.register('learning-institutions', LearningInstitutionView)
+# router.register('interests', InterestView)
 router = DefaultRouter()
-router.register('user-profile', UserProfileView)
-router.register('learning-institutions', LearningInstitutionView)
-router.register('interests', InterestView)
-
+router.register(r'user-profiles', UserProfileView, basename='userprofile')
+router.register(r'learning-institutions', LearningInstitutionView, basename='learninginstitution')
+router.register(r'interests', InterestView, basename='interest')
 
 urlpatterns = [
     path('', index),
