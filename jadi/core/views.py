@@ -10,15 +10,15 @@ def index(request):
     return render(request, 'index.html')
 
 
-# class UserProfileView(viewsets.ModelViewSet):
-#     queryset = UserProfile.objects.all()
-#     serializer_class = UserProfileSerializer
+# class UserView(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
-class UserProfileView(viewsets.ModelViewSet):
-    serializer_class = UserProfileSerializer
+class UserView(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
 
     def get_queryset(self):
-        queryset = UserProfile.objects.all()
+        queryset = User.objects.all()
         institution = self.request.query_params.get('institution', None)
         interest = self.request.query_params.get('interest', None)
         
