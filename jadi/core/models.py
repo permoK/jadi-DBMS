@@ -73,6 +73,7 @@ class User(models.Model):
 #################### Course ##############################
 class Major(models.Model):
     major_name = models.CharField(max_length=255)
+    major_abbreviation = models.CharField(max_length=255)
     
     class Meta:
         db_table = 'major'
