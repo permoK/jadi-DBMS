@@ -12,6 +12,6 @@ from .models import *
 admin.site.register(LearningInstitution)
 admin.site.register(Interest)
 admin.site.register(User)
-admin.site.register(major)
+admin.site.register(Major)
 admin.site.register(UserEducationDetails)
 
