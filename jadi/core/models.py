@@ -92,6 +92,6 @@ class UserEducationDetails(models.Model):
         db_table = 'user_education_details'
 
     def __str__(self):
-        return f'{self.user.username} - {self.learning_institution.institution_name}'
+        return f'{self.user.username} - {self.learning_institution.institutionName}'
 
 #################### End UserEducationDetails ##############################
