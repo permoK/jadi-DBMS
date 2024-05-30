@@ -83,7 +83,7 @@ class Major(models.Model):
 
 #################### UserEducationDetails ##############################
 class UserEducationDetails(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
     learning_institution = models.ForeignKey(LearningInstitution, on_delete=models.CASCADE)
     student_major = models.ForeignKey(Major, on_delete=models.SET_NULL, null=True, blank=True)
     units = models.JSONField()
