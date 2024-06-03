@@ -7,26 +7,26 @@ from django.contrib.postgres.fields import ArrayField
 
 #################### LearningInstitution ##############################
 class LearningInstitution(models.Model):
-    institutionId = models.AutoField(primary_key=True, blank=True)
-    institutionName = models.CharField(max_length=100, blank=True)
+    institution_id = models.AutoField(primary_key=True, blank=True)
+    institution_name = models.CharField(max_length=100, blank=True)
 
     class Meta:
-        db_table = 'learninginstitution'
+        db_table = 'learning_institution'
 
     def __str__(self):
-        return self.institutionName
+        return self.institution_name
 #################### End LearningInstitution ##############################
 
 #################### Interests ##############################
 class Interest(models.Model):
-    interestId = models.AutoField(primary_key=True)
-    interestName = models.CharField(max_length=100)
+    interest_id = models.AutoField(primary_key=True)
+    interest_name = models.CharField(max_length=100)
 
     class Meta:
         db_table = 'interests'
 
     def __str__(self):
-        return self.interestName
+        return self.interest_name
 #################### End Interests ##############################
 
 #################### User ##############################
@@ -84,24 +84,24 @@ class Major(models.Model):
 
 #################### UserEducationDetails ##############################
 class UserEducationDetails(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
-    learning_institution = models.ForeignKey(LearningInstitution, on_delete=models.CASCADE)
-    student_major = models.ForeignKey(Major, on_delete=models.SET_NULL, null=True, blank=True)
+    oto_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
+    fx_learning_institution = models.ForeignKey(LearningInstitution, on_delete=models.CASCADE)
+    fx_student_major = models.ForeignKey(Major, on_delete=models.SET_NULL, null=True, blank=True)
     units = models.JSONField()
 
     class Meta:
         db_table = 'user_education_details'
 
     def __str__(self):
-        return f'{self.user.username} - {self.learning_institution.institutionName}'
+        return f'{self.user.username} - {self.learning_institution.institution_name}'
 
 #################### End UserEducationDetails ##############################
 
 #################### Waitlist ##############################
 class Waitlist(models.Model):
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    fx_name = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField()
-    major = models.ForeignKey('Major', on_delete=models.CASCADE)
+    fx_major = models.ForeignKey('Major', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

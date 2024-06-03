@@ -7,7 +7,8 @@ from .serializers import *
 
 
 def index(request):
-    return render(request, 'index.html')
+    name = 'Django'
+    return render(request, 'index.html', {'name': name})
 
 
 # class UserView(viewsets.ModelViewSet):
