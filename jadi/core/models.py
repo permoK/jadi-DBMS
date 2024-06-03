@@ -55,6 +55,7 @@ class User(models.Model):
     username = models.CharField(max_length=255, unique=True)
     full_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
+    interests = models.ManyToManyField(Interest)
     is_student = models.BooleanField(default=False)
     is_lecturer = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
