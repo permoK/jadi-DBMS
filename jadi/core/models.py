@@ -95,3 +95,18 @@ class UserEducationDetails(models.Model):
         return f'{self.user.username} - {self.learning_institution.institutionName}'
 
 #################### End UserEducationDetails ##############################
+
+#################### Waitlist ##############################
+class Waitlist(models.Model):
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    email = models.EmailField()
+    major = models.ForeignKey('Major', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'waitlist'
+
+    def __str__(self):
+        return f'{self.user.username} - {self.course.course_name}'
+
+#################### End Waitlist ##############################
