@@ -30,27 +30,6 @@ class Interest(models.Model):
 #################### End Interests ##############################
 
 #################### User ##############################
-# class UserProfile(models.Model):
-#     profileId = models.AutoField(primary_key=True, blank=True)
-#     clerkId = models.CharField(max_length=100)
-#     username = models.CharField(max_length=100)
-#     fullName = models.CharField(max_length=100)
-#     email = models.EmailField(max_length=256)
-#     learningInstitution = models.ForeignKey('LearningInstitution', on_delete=models.CASCADE, blank=True, null=True)
-#     courseMajor = models.CharField(max_length=100, blank=True)
-#     interests = models.ManyToManyField(Interest)
-#     customUserInterest = ArrayField(models.CharField(max_length=100), blank=True, null=True)
-#     isStudent = models.BooleanField()
-#     isLecturer = models.BooleanField()
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     class Meta:
-#         db_table = 'userprofile'
-
-#     def __str__(self):
-#         return self.fullName
-
 class User(models.Model):
     username = models.CharField(max_length=255, unique=True)
     full_name = models.CharField(max_length=255)
@@ -93,7 +72,7 @@ class UserEducationDetails(models.Model):
         db_table = 'user_education_details'
 
     def __str__(self):
-        return f'{self.user.username} - {self.learning_institution.institution_name}'
+        return f'{self.oto_user.username} - {self.learning_institution.institution_name}'
 
 #################### End UserEducationDetails ##############################
 
