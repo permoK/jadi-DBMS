@@ -14,4 +14,5 @@ admin.site.register(Interest)
 admin.site.register(User)
 admin.site.register(Major)
 admin.site.register(UserEducationDetails)
+admin.site.register(NotesUpload)
 

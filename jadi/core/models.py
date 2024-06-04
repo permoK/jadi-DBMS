@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
 
-
 # Create your models here.
 
 #################### LearningInstitution ##############################
@@ -72,7 +71,7 @@ class UserEducationDetails(models.Model):
         db_table = 'user_education_details'
 
     def __str__(self):
-        return f'{self.oto_user.username} - {self.learning_institution.institution_name}'
+        return f'{self.oto_user.username} - {self.fx_learning_institution.institution_name}'
 
 #################### End UserEducationDetails ##############################
 
@@ -90,3 +89,17 @@ class Waitlist(models.Model):
         return f'{self.user.username} - {self.course.course_name}'
 
 #################### End Waitlist ##############################
+
+
+#################### uploads ##################################
+class NotesUpload(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    note = models.FileField(upload_to='',)
+    
+    class Meta:
+        db_table = 'notes'
+
+    def __str__(self):
+        return f'{self.title - self.note}'
+################### endUploads #################################
