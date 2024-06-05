@@ -77,10 +77,11 @@ class UserEducationDetails(models.Model):
 
 #################### Waitlist ##############################
 class Waitlist(models.Model):
-    fx_name = models.ForeignKey(User, on_delete=models.CASCADE)
+    # fx_name = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
     email = models.EmailField()
-    fx_major = models.ForeignKey('Major', on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
+    # fx_major = models.ForeignKey('Major', on_delete=models.CASCADE)
+    # created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'waitlist'
