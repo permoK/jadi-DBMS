@@ -104,3 +104,35 @@ class NotesUpload(models.Model):
     def __str__(self):
         return f'{self.title - self.note}'
 ################### endUploads #################################
+
+################### resources #################################
+class ResourceType(models.Model):
+    resource_type_name = models.CharField(max_length=256)
+
+    class Meta:
+        db_table = 'resource_types'
+
+class Resource(models.Model):
+    download_url = models.TextField()
+    uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.TextField()
+    description = models.TextField(null=True, blank=True)
+    size = models.IntegerField()
+    cms_id = models.CharField(max_length=256)
+    category = models.CharField(max_length=256)
+    resource_type = models.ForeignKey(ResourceType, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'resources'
+
+class ResourceTag(models.Model):
+    resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
+    interest = models.ForeignKey(Interest, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'resource_tags'
+        unique_together = ('resource', 'interest')
+
+################### end resources #################################

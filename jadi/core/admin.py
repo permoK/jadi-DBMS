@@ -15,4 +15,7 @@ admin.site.register(User)
 admin.site.register(Major)
 admin.site.register(UserEducationDetails)
 admin.site.register(NotesUpload)
-
+admin.site.register(Waitlist)
+admin.site.register(ResourceType)
+admin.site.register(Resource)
+admin.site.register(ResourceTag)
