@@ -112,6 +112,9 @@ class ResourceType(models.Model):
     class Meta:
         db_table = 'resource_types'
 
+    def __str__(self):
+        return self.resource_type_name
+
 class Resource(models.Model):
     download_url = models.TextField()
     uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -126,6 +129,8 @@ class Resource(models.Model):
 
     class Meta:
         db_table = 'resources'
+    def __str__(self):
+        return self.uploaded_by
 
 class ResourceTag(models.Model):
     resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
@@ -134,5 +139,8 @@ class ResourceTag(models.Model):
     class Meta:
         db_table = 'resource_tags'
         unique_together = ('resource', 'interest')
+
+    def __str__(self):
+        return self.resource
 
 ################### end resources #################################
