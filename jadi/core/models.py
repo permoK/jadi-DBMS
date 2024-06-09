@@ -122,15 +122,15 @@ class Resource(models.Model):
     description = models.TextField(null=True, blank=True)
     size = models.IntegerField()
     cms_id = models.CharField(max_length=256)
-    category = models.CharField(max_length=256)
+    category = models.ForeignKey(Major, on_delete=models.CASCADE)
     resource_type = models.ForeignKey(ResourceType, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = 'resources'
-    def __str__(self):
-        return self.uploaded_by
+    # def __str__(self):
+    #     return self.uploaded_by
 
 class ResourceTag(models.Model):
     resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
@@ -141,6 +141,6 @@ class ResourceTag(models.Model):
         unique_together = ('resource', 'interest')
 
     def __str__(self):
-        return self.resource
-
+        num = str(self.resource)
+        return f"resource - {num}" 
 ################### end resources #################################
