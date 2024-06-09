@@ -25,10 +25,11 @@ numpy==1.26.2
 packaging==23.2
 Pillow==10.1.0
 platformdirs==4.2.2
-# psycopg==3.1.19
+psycopg==3.1.19
+psycopg2==2.9.9
 psycopg2-binary==2.9.9
 pydotplus==2.0.2
-# pygraphviz==1.13
+pygraphviz==1.13
 pylint==3.2.3
 pyparsing==3.1.1
 pyreadline3==3.4.1
